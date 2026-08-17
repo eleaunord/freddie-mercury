@@ -1,0 +1,21 @@
+# Dossiers générés par Unity
+/Library/
+/Temp/
+/Logs/
+/UserSettings/
+/obj/
+/Build/
+/Builds/
+
+# Fichiers spécifiques à la machine
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+.vs/
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
