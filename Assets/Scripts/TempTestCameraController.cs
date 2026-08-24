@@ -87,7 +87,7 @@ public class TempTestCameraController : MonoBehaviour
         // Déplacement à plat (on ignore le pitch de la caméra) : pas de vol, pas de saut.
         Vector3 forward = transform.forward;
         forward.y = 0f;
-        forward.Normalize();
+        forward.Normzalize();
 
         Vector3 right = transform.right;
         right.y = 0f;
