@@ -21,6 +21,36 @@ Chaque tâche a un seul propriétaire du début à la fin — personne ne repren
   - Aucune interaction "prête à l'emploi" fournie → colle à l'exigence "rawest API" / "no advance packages"
 - **Locomotion** : téléportation instantanée (raycast + snap de position), sans arc de visée ni transition/fade, sans vignetting de confort associé. À surveiller en playtest (J13) pour vérifier que le confort reste correct malgré l'absence de transition.
 
+### Setup en place
+
+- Unity 6000.4.4f1, Built-in Render Pipeline, color space **Linear**.
+- Packages VR : `com.unity.xr.openxr` + `com.unity.inputsystem` **uniquement** (pas de XR Interaction Toolkit, contrainte « rawest API »).
+- Loader OpenXR activé pour **Android** (casque standalone) et **Standalone** (Play mode PC VR, Windows uniquement, cf. ci-dessous).
+- Profils d'interaction : Oculus Touch + Khronos Simple (fallback Lynx et autres runtimes OpenXR), Meta Quest Support côté Android, Vive + Index côté Standalone.
+- Rendu : Single Pass Instanced, Vulkan seul, ARM64 / IL2CPP, minSdk 29 (Lynx R1 = Android 10), MSAA 4x, vsync laissé au casque.
+
+### Arborescence
+
+| Chemin | Rôle |
+|---|---|
+| `Assets/_Project/Scenes/Lobby.unity` | Scène de départ (greybox 6x6 m) |
+| `Assets/_Project/Prefabs/XR Rig.prefab` | Rig joueur : tête + 2 mains, à réutiliser dans chaque niveau |
+| `Assets/_Project/Settings/XRControls.inputactions` | Actions XR : pose tête/mains, grip, trigger, thumbstick |
+| `Assets/_Project/Scripts/Runtime/Player/XRTrackingOrigin.cs` | Passe le runtime en tracking origin `Floor` (remplace `XROrigin`) |
+| `Assets/_Project/Scripts/Runtime/Core/InputActionAssetEnabler.cs` | Active l'asset d'actions pour tout le rig |
+| `Assets/_Project/Scripts/Editor/HeadsetBuild.cs` | Menu `Freddie Mercury > Build and Run on Headset` |
+
+Le rig n'applique **aucun** offset de caméra : en mode `Floor` le runtime renvoie déjà la taille réelle du joueur.
+
+### Lancer sur le casque
+
+1. Casque en mode développeur, branché en USB (`adb devices` doit le lister).
+2. Menu Unity : `Freddie Mercury > Build and Run on Headset` (build dev, APK dans `Builds/`).
+
+**Pas besoin de Quest Link** : le jeu tourne en standalone dans le casque.
+
+Le Play mode de l'éditeur n'affiche de la VR que si un runtime PC VR tourne (Quest Link / Air Link / SteamVR), ce qui est **Windows uniquement** : sur macOS il n'existe aucun runtime Oculus PC. Sur Mac, chaque test casque passe donc par un build APK. La config OpenXR Standalone reste en place pour le poste Windows du binôme.
+
 ## Bonus visés
 
 | # | Bonus | Approche |
