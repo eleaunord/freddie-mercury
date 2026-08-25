@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Collections; //necessary pour coroutine
+using System.Collections.Generic; //necessary pour List<T>
 using UnityEngine;
-using UnityEngine.XR;
+using UnityEngine.XR; //bring XRInputSubsystem
 
 namespace FreddieMercury.Player
 {
@@ -9,11 +9,12 @@ namespace FreddieMercury.Player
     // In Floor mode the runtime already reports the player's real height,
     // so the camera keeps no manual offset. Polling is needed because the
     // subsystem only exists once the XR loader has started.
-    [DisallowMultipleComponent]
-    public sealed class XRTrackingOrigin : MonoBehaviour
+    // with the headset firmware ground captation gives the real height of the ground which permit that the player head is well placed without calculate
+    [DisallowMultipleComponent] //disable to being able to add 2 times this script on the same game object for obv problems
+    public sealed class XRTrackingOrigin : MonoBehaviour //"sealed" means no one should heritate of this class to extend
     {
         [SerializeField, Tooltip("Reference point the runtime reports poses from.")]
-        TrackingOriginModeFlags m_Mode = TrackingOriginModeFlags.Floor;
+        TrackingOriginModeFlags m_Mode = TrackingOriginModeFlags.Floor; // Floor = the xr runtime (headset) instant gives the floor position as 0.0.0
 
         [SerializeField, Tooltip("Seconds spent waiting for the XR input subsystem to start before giving up.")]
         float m_StartupTimeout = 10f;
@@ -21,7 +22,7 @@ namespace FreddieMercury.Player
         // Reused every frame so polling doesn't allocate.
         static readonly List<XRInputSubsystem> k_Subsystems = new List<XRInputSubsystem>();
 
-        IEnumerator Start()
+        IEnumerator Start() // start coroutine (waiting) ! permit to not stop the main thread with traditional while () yield return so we dont return the program :)
         {
             var deadline = Time.realtimeSinceStartup + m_StartupTimeout;
 
@@ -32,11 +33,6 @@ namespace FreddieMercury.Player
 
                 yield return null;
             }
-
-            Debug.LogWarning(
-                $"[{nameof(XRTrackingOrigin)}] No running XR input subsystem accepted the '{m_Mode}' tracking origin. " +
-                "The rig keeps the device default, which usually places the player's head at this transform.",
-                this);
         }
 
         bool TryApplyModeToRunningSubsystems()
@@ -46,10 +42,11 @@ namespace FreddieMercury.Player
             var applied = false;
             foreach (var subsystem in k_Subsystems)
             {
-                if (!subsystem.running || (subsystem.GetSupportedTrackingOriginModes() & m_Mode) == 0)
+                if (!subsystem.running || !subsystem.GetSupportedTrackingOriginModes().HasFlag(m_Mode))
                     continue;
 
-                applied |= subsystem.TrySetTrackingOriginMode(m_Mode);
+                if (subsystem.TrySetTrackingOriginMode(m_Mode))
+                    applied = true;
             }
 
             return applied;

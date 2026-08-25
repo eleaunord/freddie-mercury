@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.InputSystem; //bring input action
 
 namespace FreddieMercury.Core
 {
