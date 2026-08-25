@@ -18,6 +18,7 @@ namespace FreddieMercury.Player
         [SerializeField, Tooltip("Seconds spent waiting for the XR input subsystem to start before giving up.")]
         float m_StartupTimeout = 10f;
 
+        // Reused every frame so polling doesn't allocate.
         static readonly List<XRInputSubsystem> k_Subsystems = new List<XRInputSubsystem>();
 
         IEnumerator Start()
@@ -26,7 +27,7 @@ namespace FreddieMercury.Player
 
             while (Time.realtimeSinceStartup < deadline)
             {
-                if (TryApplyMode())
+                if (TryApplyModeToRunningSubsystems())
                     yield break;
 
                 yield return null;
@@ -38,7 +39,7 @@ namespace FreddieMercury.Player
                 this);
         }
 
-        bool TryApplyMode()
+        bool TryApplyModeToRunningSubsystems()
         {
             SubsystemManager.GetSubsystems(k_Subsystems);
 
