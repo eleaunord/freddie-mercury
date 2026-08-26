@@ -1,0 +1,5 @@
+/home/ele/Documents/freddy-mercury1/.utmp/RelWithDebInfo/64644q46/arm64-v8a/CMakeFiles/edit_cache.dir
+/home/ele/Documents/freddy-mercury1/.utmp/RelWithDebInfo/64644q46/arm64-v8a/CMakeFiles/rebuild_cache.dir
+/home/ele/Documents/freddy-mercury1/.utmp/RelWithDebInfo/64644q46/arm64-v8a/GameActivity/CMakeFiles/game.dir
+/home/ele/Documents/freddy-mercury1/.utmp/RelWithDebInfo/64644q46/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+/home/ele/Documents/freddy-mercury1/.utmp/RelWithDebInfo/64644q46/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir

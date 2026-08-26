@@ -1,0 +1,2 @@
+/home/ele/Documents/freddy-mercury1/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/CMakeLists.txt
+/home/ele/Documents/freddy-mercury1/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/CMakeLists.txt

@@ -130,7 +130,7 @@ PrefabInstance:
     - target: {fileID: 262870921103369552, guid: 3e0c63fc47b386e1686ab63cfb1bdea6, type: 3}
       propertyPath: key
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 523704596}
     - target: {fileID: 262870921103369552, guid: 3e0c63fc47b386e1686ab63cfb1bdea6, type: 3}
       propertyPath: lockTarget
       value: 
@@ -139,10 +139,6 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: abbcaf1dfa75290d9aa7ed9bf68dd364, type: 2}
-    - target: {fileID: 1284681994913692017, guid: 3e0c63fc47b386e1686ab63cfb1bdea6, type: 3}
-      propertyPath: requiredKey
-      value: 
-      objectReference: {fileID: 523704596}
     - target: {fileID: 3246916927368457534, guid: 3e0c63fc47b386e1686ab63cfb1bdea6, type: 3}
       propertyPath: m_Size.x
       value: 0.20706956
@@ -278,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 622021c9a4c106cb6bf44794a5bb490c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.30064714
+      value: 0.9647874
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 622021c9a4c106cb6bf44794a5bb490c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -286,7 +282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 622021c9a4c106cb6bf44794a5bb490c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.9537355
+      value: 0.263031
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 622021c9a4c106cb6bf44794a5bb490c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -298,7 +294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 622021c9a4c106cb6bf44794a5bb490c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -145.007
+      value: 30.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 622021c9a4c106cb6bf44794a5bb490c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -451,15 +447,15 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 96fc9d9d8980ed594902ea2b2dfa3e47, type: 3}
 --- !u!114 &523704596 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8360904681480095514, guid: 96fc9d9d8980ed594902ea2b2dfa3e47, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6992490018041536574, guid: 96fc9d9d8980ed594902ea2b2dfa3e47, type: 3}
   m_PrefabInstance: {fileID: 523704595}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce2eedce8c97a4704874b583c25b9c15, type: 3}
+  m_Script: {fileID: 11500000, guid: fdbe299f2ae600edda9f41c1ad64f41d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KeyInsertable
+  m_EditorClassIdentifier: Assembly-CSharp::CollectibleItem
 --- !u!1001 &530484502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -798,7 +794,6 @@ GameObject:
   - component: {fileID: 1893631624}
   - component: {fileID: 1893631623}
   - component: {fileID: 1893631622}
-  - component: {fileID: 1893631625}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -873,98 +868,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1893631621}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+  m_LocalPosition: {x: -0.17, y: 3.2963686, z: 8.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2127445495}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1893631625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1893631621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fadf230d1919748a9aa21d40f74619, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.XR.TrackedPoseDriver
-  m_TrackingType: 0
-  m_UpdateType: 0
-  m_IgnoreTrackingState: 0
-  m_PositionInput:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Position
-      m_Type: 0
-      m_ExpectedControlType: Vector3
-      m_Id: f223cb15-ab9a-40cf-9169-163a9e95b75b
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings:
-      - m_Name: 
-        m_Id: 2117e76d-d76d-41b3-887d-aa9dca052c6e
-        m_Path: <XRHMD>/centerEyePosition
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Position
-        m_Flags: 0
-      m_Flags: 0
-    m_Reference: {fileID: 0}
-  m_RotationInput:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Rotation
-      m_Type: 0
-      m_ExpectedControlType: Quaternion
-      m_Id: 49d61587-81fe-4106-adb3-bf5ff78dfa29
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings:
-      - m_Name: 
-        m_Id: 13afdb36-8127-4142-8179-f693bf6333c5
-        m_Path: <XRHMD>/centerEyeRotation
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Rotation
-        m_Flags: 0
-      m_Flags: 0
-    m_Reference: {fileID: 0}
-  m_TrackingStateInput:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Tracking State
-      m_Type: 0
-      m_ExpectedControlType: Integer
-      m_Id: fac1a053-df9e-4246-a2aa-6862464cae5a
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
-  m_PositionAction:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 894b4d58-c088-41c3-a0b0-0e0d700aa635
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  m_RotationAction:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 41d7b27b-087c-4514-967b-657112cde11f
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
 --- !u!1 &1962359489
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +894,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1962359490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1095,53 +1005,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TEMP_ItemInteractionTester
   sourceCamera: {fileID: 1962359491}
   maxRayDistance: 3
---- !u!1 &2127445493
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2127445495}
-  - component: {fileID: 2127445494}
-  m_Layer: 0
-  m_Name: XR Rig
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2127445494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2127445493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee68845bf46494d6d876f9b5a286338f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: FreddieMercury.Runtime::FreddieMercury.Player.XRTrackingOrigin
-  m_Mode: 2
-  m_StartupTimeout: 10
---- !u!4 &2127445495
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2127445493}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1893631624}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &68918280572674420
 Transform:
   m_ObjectHideFlags: 0
@@ -3226,7 +3089,7 @@ GameObject:
   - component: {fileID: 4767789974565975970}
   - component: {fileID: 9025517292882210755}
   m_Layer: 0
-  m_Name: Door_Handle
+  m_Name: Door_Handle.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3634,7 +3497,7 @@ GameObject:
   - component: {fileID: 522999713}
   - component: {fileID: 8916417192122582321}
   m_Layer: 0
-  m_Name: Door_Panel
+  m_Name: Door Panel.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4479,6 +4342,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 987453596}
+  - {fileID: 1893631624}
   - {fileID: 1962359492}
   - {fileID: 1889219588}
   - {fileID: 543450653585399500}
@@ -4488,4 +4352,3 @@ SceneRoots:
   - {fileID: 479359121}
   - {fileID: 1849089947}
   - {fileID: 530484502}
-  - {fileID: 2127445495}

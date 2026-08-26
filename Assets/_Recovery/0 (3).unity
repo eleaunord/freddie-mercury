@@ -130,7 +130,7 @@ PrefabInstance:
     - target: {fileID: 262870921103369552, guid: 3e0c63fc47b386e1686ab63cfb1bdea6, type: 3}
       propertyPath: key
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 523704596}
     - target: {fileID: 262870921103369552, guid: 3e0c63fc47b386e1686ab63cfb1bdea6, type: 3}
       propertyPath: lockTarget
       value: 
@@ -139,10 +139,6 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: abbcaf1dfa75290d9aa7ed9bf68dd364, type: 2}
-    - target: {fileID: 1284681994913692017, guid: 3e0c63fc47b386e1686ab63cfb1bdea6, type: 3}
-      propertyPath: requiredKey
-      value: 
-      objectReference: {fileID: 523704596}
     - target: {fileID: 3246916927368457534, guid: 3e0c63fc47b386e1686ab63cfb1bdea6, type: 3}
       propertyPath: m_Size.x
       value: 0.20706956
@@ -278,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 622021c9a4c106cb6bf44794a5bb490c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.30064714
+      value: 0.9647874
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 622021c9a4c106cb6bf44794a5bb490c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -286,7 +282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 622021c9a4c106cb6bf44794a5bb490c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.9537355
+      value: 0.263031
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 622021c9a4c106cb6bf44794a5bb490c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -298,7 +294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 622021c9a4c106cb6bf44794a5bb490c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -145.007
+      value: 30.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 622021c9a4c106cb6bf44794a5bb490c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -451,15 +447,15 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 96fc9d9d8980ed594902ea2b2dfa3e47, type: 3}
 --- !u!114 &523704596 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8360904681480095514, guid: 96fc9d9d8980ed594902ea2b2dfa3e47, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6992490018041536574, guid: 96fc9d9d8980ed594902ea2b2dfa3e47, type: 3}
   m_PrefabInstance: {fileID: 523704595}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce2eedce8c97a4704874b583c25b9c15, type: 3}
+  m_Script: {fileID: 11500000, guid: fdbe299f2ae600edda9f41c1ad64f41d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KeyInsertable
+  m_EditorClassIdentifier: Assembly-CSharp::CollectibleItem
 --- !u!1001 &530484502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3226,7 +3222,7 @@ GameObject:
   - component: {fileID: 4767789974565975970}
   - component: {fileID: 9025517292882210755}
   m_Layer: 0
-  m_Name: Door_Handle
+  m_Name: Door_Handle.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3634,7 +3630,7 @@ GameObject:
   - component: {fileID: 522999713}
   - component: {fileID: 8916417192122582321}
   m_Layer: 0
-  m_Name: Door_Panel
+  m_Name: Door Panel.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
