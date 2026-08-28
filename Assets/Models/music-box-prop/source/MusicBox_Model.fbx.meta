@@ -3,7 +3,12 @@ guid: 277c106ec2377b2d88e7837e73d66c91
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MusicBox_Mat
+    second: {fileID: 2100000, guid: ec9c1e0161ce778ff89e7bbbcd939516, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -35,7 +35,10 @@ public class RotationConstraint : MonoBehaviour
     [SerializeField] private float maxAngle = 90f;
 
     [Header("Condition d'insertion")]
-    [Tooltip("La clé qui doit être insérée (IsInserted == true) pour que ApplyRotationDelta ait un effet. Laissée vide, toute rotation est bloquée par sécurité (avec un avertissement dans la Console).")]
+    [Tooltip("Si actif, une clé doit être insérée (voir RequiredKey) pour que ApplyRotationDelta ait un effet (cas du cadenas). Si inactif, la rotation est toujours libre : pas de notion de clé (cas d'une molette de combinaison).")]
+    [SerializeField] private bool requireKey = true;
+
+    [Tooltip("La clé qui doit être insérée (IsInserted == true) pour que ApplyRotationDelta ait un effet, quand RequireKey est actif. Laissée vide (RequireKey actif), toute rotation est bloquée par sécurité (avec un avertissement dans la Console).")]
     [SerializeField] private KeyInsertable requiredKey;
 
     [Header("Événement")]
@@ -80,17 +83,20 @@ public class RotationConstraint : MonoBehaviour
     /// </summary>
     public void ApplyRotationDelta(float degrees)
     {
-        if (requiredKey == null)
+        if (requireKey)
         {
-            if (!_warnedMissingKey)
+            if (requiredKey == null)
             {
-                Debug.LogWarning("RotationConstraint sur '" + name + "' : aucune 'Required Key' assignée dans l'Inspector - rotation bloquée par sécurité.");
-                _warnedMissingKey = true;
+                if (!_warnedMissingKey)
+                {
+                    Debug.LogWarning("RotationConstraint sur '" + name + "' : 'Require Key' actif mais aucune 'Required Key' assignée dans l'Inspector - rotation bloquée par sécurité.");
+                    _warnedMissingKey = true;
+                }
+                return;
             }
-            return;
-        }
 
-        if (!requiredKey.IsInserted) return;
+            if (!requiredKey.IsInserted) return;
+        }
 
         float newAngle = Mathf.Clamp(_currentAngle + degrees, minAngle, maxAngle);
         if (Mathf.Approximately(newAngle, _currentAngle)) return;
