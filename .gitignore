@@ -6,6 +6,7 @@
 /obj/
 /Build/
 /Builds/
+/.utmp/
 
 # Fichiers spécifiques à la machine
 *.csproj
