@@ -2,7 +2,8 @@
     "name": "FreddieMercury.Runtime",
     "rootNamespace": "FreddieMercury",
     "references": [
-        "Unity.InputSystem"
+        "Unity.InputSystem",
+        "Unity.XR.Hands"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
