@@ -1,5 +1,6 @@
 using System.Drawing;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 using UnityEngine.XR.Hands;
 
 namespace FreddieMercury.Interaction
@@ -28,6 +29,10 @@ namespace FreddieMercury.Interaction
         [SerializeField, Tooltip("Layers considered grabbable.")]
         LayerMask m_GrabbableLayers = ~0;
 
+        Vector3 oldPoint = Vector3.zero;
+
+        Vector3 velocityPoint = Vector3.zero;
+
         readonly Collider[] m_Hits = new Collider[8];
 
         bool m_Pinching;
@@ -35,6 +40,7 @@ namespace FreddieMercury.Interaction
 
         void OnValidate()
         {
+            //To prevend if values are incorrect
             if (m_OpenThreshold <= m_CloseThreshold)
             {
                 m_OpenThreshold = m_CloseThreshold + 0.005f;
@@ -48,7 +54,7 @@ namespace FreddieMercury.Interaction
                 Debug.LogError("Grabber need a XRHandTracking reference.", this);
                 enabled = false;
             }
-            else
+            else //Subscribe our function to the handevent list of ref function
             {
                 m_HandEvents.jointsUpdated.AddListener(OnJointsUpdated);
                 m_HandEvents.trackingLost.AddListener(OnTrackingLost);
@@ -76,7 +82,6 @@ namespace FreddieMercury.Interaction
                 return;
             var dist = Vector3.Distance(thumbPose.position, indexPose.position);
             var point = ToWorld((thumbPose.position + indexPose.position) / 2f);
-
             if (dist <= m_CloseThreshold && !m_Pinching)
             {
                 Grab(point);
@@ -87,11 +92,15 @@ namespace FreddieMercury.Interaction
                 Release();
                 m_Pinching = false;
             }
-
             if (m_Held)
             {
                 m_Held.MovePosition(point);
             }
+            if (m_Pinching && m_Held)
+            {
+                velocityPoint = (point - oldPoint) / Time.deltaTime;
+            }
+            oldPoint = point;
         }
 
         void OnTrackingLost()
@@ -142,6 +151,7 @@ namespace FreddieMercury.Interaction
             {
                 return;
             }
+            m_Held.linearVelocity = velocityPoint;
             m_Held.isKinematic = false;
             m_Held = null;
         }
