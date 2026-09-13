@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e314dfef9af0904e80129bcc0a79361, type: 3}
   m_Name: HandTracking Android
   m_EditorClassIdentifier: Unity.XR.Hands::UnityEngine.XR.Hands.OpenXR.HandTracking
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Hand Tracking Subsystem
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.handtrackingsubsystem
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e068f7c0f1a950f41a559a42c84d6562, type: 3}
   m_Name: LynxR1Feature Android
   m_EditorClassIdentifier: Lynx.Core::Lynx.OpenXR.LynxR1Feature
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Lynx-R1
   version: 1.2.2
   featureIdInternal: com.lynx.openxr.feature

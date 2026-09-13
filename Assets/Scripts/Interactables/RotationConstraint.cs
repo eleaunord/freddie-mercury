@@ -1,8 +1,8 @@
 // Rotation contrainte pour un objet dont la rotation ne doit être possible
 // que serrure/clé insérée (ex: le cadenas, INTERACT_Cadenas). Tourne autour
 // d'un axe local unique, clampé strictement entre un angle min et un angle
-// max.
-//
+// max.Documents
+//Documents
 // Ce component ne connaît RIEN du grab, de la main, ni du clavier : il
 // expose uniquement ApplyRotationDelta(degrees), destinée à être appelée par
 // n'importe quelle source de rotation (testeur clavier aujourd'hui, futur
@@ -17,7 +17,7 @@ using UnityEngine.Events;
 
 /// <summary>
 /// UnityEvent&lt;float&gt; sérialisable dans l'Inspector, invoqué avec
-/// l'angle courant du cadenas normalisé entre 0 (MinAngle) et 1 (MaxAngle).
+/// l'angle courant du cadenas normalisé entDocumentsre 0 (MinAngle) et 1 (MaxAngle).
 /// </summary>
 [Serializable]
 public class NormalizedAngleEvent : UnityEvent<float> { }
