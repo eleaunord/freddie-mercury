@@ -1,6 +1,5 @@
 using System.Drawing;
 using UnityEngine;
-using UnityEngine.InputSystem.Controls;
 using UnityEngine.XR.Hands;
 
 namespace FreddieMercury.Interaction
@@ -36,11 +35,11 @@ namespace FreddieMercury.Interaction
         readonly Collider[] m_Hits = new Collider[8];
 
         bool m_Pinching;
-        Rigidbody m_Held;
+        Grabbable m_Held;
 
         void OnValidate()
         {
-            //To prevend if values are incorrect
+            // To prevend if values are incorrect
             if (m_OpenThreshold <= m_CloseThreshold)
             {
                 m_OpenThreshold = m_CloseThreshold + 0.005f;
@@ -54,7 +53,7 @@ namespace FreddieMercury.Interaction
                 Debug.LogError("Grabber need a XRHandTracking reference.", this);
                 enabled = false;
             }
-            else //Subscribe our function to the handevent list of ref function
+            else // Subscribe our function to the handevent list of ref function
             {
                 m_HandEvents.jointsUpdated.AddListener(OnJointsUpdated);
                 m_HandEvents.trackingLost.AddListener(OnTrackingLost);
@@ -81,7 +80,7 @@ namespace FreddieMercury.Interaction
             if (!args.hand.GetJoint(XRHandJointID.ThumbTip).TryGetPose(out var thumbPose) || !args.hand.GetJoint(XRHandJointID.IndexTip).TryGetPose(out var indexPose))
                 return;
             var dist = Vector3.Distance(thumbPose.position, indexPose.position);
-            var point = ToWorld((thumbPose.position + indexPose.position) / 2f);
+            var point = ToWorld((thumbPose.position + indexPose.position) / 2f); // Le point est la position du princement (entre le pouce et l'index), plus tard egalement la position de l'objet princé
             if (dist <= m_CloseThreshold && !m_Pinching)
             {
                 Grab(point);
@@ -94,21 +93,24 @@ namespace FreddieMercury.Interaction
             }
             if (m_Held)
             {
-                m_Held.MovePosition(point);
+                m_Held.TryMoveTo(point);
             }
-            if (m_Pinching && m_Held)
+            if (m_Pinching && m_Held) // TODO: Cas d'erreur premier point ?
             {
-                velocityPoint = (point - oldPoint) / Time.deltaTime;
+                velocityPoint = (point - oldPoint) / Time.deltaTime; //vitesse = distance divisé par temps d'une frame
             }
             oldPoint = point;
         }
 
         void OnTrackingLost()
         {
+            if (m_Held)
+                Release();
         }
 
         Vector3 ToWorld(Vector3 trackingSpacePosition)
         {
+            // Le casque te donne les positions du pouce/index relatives au rig, on a besoin des valeurs par apport a notre espace a nous ex: notre scene. TransformPoint fait la convertion des element d'espace rig a espace scene en tenant compte des position ET rotation.
             if (m_TrackingSpace)
                 return m_TrackingSpace.TransformPoint(trackingSpacePosition);
             else
@@ -117,7 +119,8 @@ namespace FreddieMercury.Interaction
 
         void Grab(Vector3 point)
         {
-            int count = Physics.OverlapSphereNonAlloc(point, m_GrabRadius, m_Hits, m_GrabbableLayers);
+            // Les hits sont les elements intercepté par le grabs ils sont au nombre maximum de 8, ils vont tous etre flitrés jusqu'a trouvé le meilleur condidat (l'element le plus proche du point de grab)
+            int count = Physics.OverlapSphereNonAlloc(point, m_GrabRadius, m_Hits, m_GrabbableLayers); // (retutilise le tableau) Elle dessine une sphère invisible dans la scène et dit quels colliders la touchent
             Grabbable finalComp = null;
             float smallest = float.MaxValue;
             for (int i = 0; i < count; i++)
@@ -138,10 +141,10 @@ namespace FreddieMercury.Interaction
             {
                 return ;
             }
-            else
+            else // Si trouvé on stock le candidat a grab et on enleve la gravité afin de pouvoir le manipuler sans contrainte
             {
-                m_Held = finalComp.GetComponent<Rigidbody>();
-                m_Held.isKinematic = true;
+                m_Held = finalComp;
+                m_Held.Body.isKinematic = true;
             }
         }
 
@@ -151,8 +154,8 @@ namespace FreddieMercury.Interaction
             {
                 return;
             }
-            m_Held.linearVelocity = velocityPoint;
-            m_Held.isKinematic = false;
+            m_Held.Body.linearVelocity = velocityPoint; //Donner la velocité
+            m_Held.Body.isKinematic = false;
             m_Held = null;
         }
     }

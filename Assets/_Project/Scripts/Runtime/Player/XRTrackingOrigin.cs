@@ -5,12 +5,6 @@
 
     namespace FreddieMercury.Player
     {
-        // Replaces the tracking origin handling an XROrigin would provide.
-        // In Floor mode the runtime already reports the player's real height,
-        // so the camera keeps no manual offset. Polling is needed because the
-        // subsystem only exists once the XR loader has started.
-        // with the headset firmware ground captation gives the real height of the ground which permit that the player head is well placed without calculate
-        [DisallowMultipleComponent] //disable to being able to add 2 times this script on the same game object for obv problems
         public sealed class XRTrackingOrigin : MonoBehaviour //"sealed" means no one should heritate of this class to extend
         {
             [SerializeField, Tooltip("Reference point the runtime reports poses from.")]
@@ -35,7 +29,6 @@
                     yield return null;
                 }
             }
-
             bool TryApplyModeToRunningSubsystems()
             {
                 SubsystemManager.GetSubsystems(k_Subsystems);
@@ -48,7 +41,7 @@
                         continue;
                     }
 
-                    if (subsystem.TrySetTrackingOriginMode(m_Mode))
+                    if (subsystem.TrySetTrackingOriginMode(m_Mode)) // Demande au casque de mesurer les positions depuis le sol donc sol = 0 et pas device = 0
                     {
                         applied = true;
                     }
