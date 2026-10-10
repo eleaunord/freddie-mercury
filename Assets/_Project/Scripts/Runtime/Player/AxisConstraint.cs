@@ -22,9 +22,6 @@ namespace FreddieMercury
         void Awake()
         {
             m_RestPosition = transform.position; // Capture la position de depart de l'objet
-            // TODO H — capture la position de départ de l'objet dans m_RestPosition,
-            //          une seule fois (transform.position). C'est le point "distance 0"
-            //          à partir duquel m_MinDistance/m_MaxDistance sont mesurées.
         }
 
         public Vector3 Clamp(Vector3 desiredWorldPosition)
